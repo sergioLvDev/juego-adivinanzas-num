@@ -8,8 +8,9 @@ let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
 const boton = document.getElementById("comprobar");
 const reset = document.getElementById("reset");
-console.log(boton);
-console.log(reset);
+const mago = document.querySelector(".mago");
+const jsConfetti = new JSConfetti();
+
 let cont = 10;
 
 // Función para comprobar el número ingresado
@@ -31,6 +32,11 @@ function chequearResultado() {
     mensaje.textContent = "¡Felicidades! ¡Has adivinado el número correcto!";
     mensaje.style.color = "green";
     boton.disabled = true;
+    jsConfetti.addConfetti({
+      emojis: ["⚡️", "💥", "✨", "💫"],
+      emojiSize: 70,
+      confettiNumber: 200,
+    });
     return;
   } else if (numeroIngresado < numeroAzar) {
     mensaje.textContent = "El número es mayor. Intenta de nuevo.";
@@ -60,6 +66,4 @@ reset.addEventListener("click", () => {
   cont = 10;
   boton.disabled = false;
   boton.style.backgroundColor = "#4CAF50";
-  console.log(numeroAzar);
 });
-console.log(numeroAzar);

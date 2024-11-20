@@ -7,12 +7,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego de adivinar el número</title>
   <link rel="shortcut icon" href="./mago.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <h1>Adivina el número</h1>
-  <img src="./mago.png" alt="img mago" class="mago">
+  <img src="./mago.png" alt="img mago" class="mago animate__animated animate__zoomIn">
   <p>Introduce un número entre 1 y 100:</p>
   <input type="number" id="numeroEntrada">
   <p id="mensaje"> A Jugar !!!</p>
@@ -21,6 +22,7 @@
   <h4>Intentos:<p id="intentos">10</p>
   </h4>
 
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
   <script src="script.js"></script>
 </body>
 
