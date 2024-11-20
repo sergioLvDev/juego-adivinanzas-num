@@ -7,21 +7,18 @@ let numeroEntrada = document.getElementById("numeroEntrada");
 let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
 const boton = document.getElementById("comprobar");
+const reset = document.getElementById("reset");
+console.log(boton);
+console.log(reset);
 let cont = 10;
+
 // Función para comprobar el número ingresado
+boton.addEventListener("click", chequearResultado);
 function chequearResultado() {
   let numeroIngresado = parseInt(numeroEntrada.value);
-  console.log(numeroIngresado);
+  const res = typeof numeroIngresado;
 
-  cont--;
-  console.log(cont);
-  intentos.textContent = cont;
-  if (cont === 0) {
-    mensaje.textContent = "Has perdido 😒, el número era " + numeroAzar;
-    boton.disabled = true;
-    boton.style.backgroundColor = "red";
-    return;
-  }
+  console.log(res);
 
   if (numeroIngresado < 1 || numeroIngresado > 100 || isNaN(numeroIngresado)) {
     mensaje.textContent =
@@ -34,6 +31,7 @@ function chequearResultado() {
     mensaje.textContent = "¡Felicidades! ¡Has adivinado el número correcto!";
     mensaje.style.color = "green";
     boton.disabled = true;
+    return;
   } else if (numeroIngresado < numeroAzar) {
     mensaje.textContent = "El número es mayor. Intenta de nuevo.";
     mensaje.style.color = "red";
@@ -41,4 +39,27 @@ function chequearResultado() {
     mensaje.textContent = "El número es menor. Intenta de nuevo.";
     mensaje.style.color = "red";
   }
+
+  cont--;
+  intentos.textContent = cont;
+
+  if (cont === 0) {
+    mensaje.textContent = "Has perdido 😒, el número era " + numeroAzar;
+    boton.disabled = true;
+    boton.style.backgroundColor = "red";
+    return;
+  }
 }
+
+// Función para reiniciar el juego
+reset.addEventListener("click", () => {
+  numeroAzar = Math.floor(Math.random() * 100) + 1;
+  numeroEntrada.value = "";
+  mensaje.textContent = "A Jugar !!!";
+  intentos.textContent = 10;
+  cont = 10;
+  boton.disabled = false;
+  boton.style.backgroundColor = "#4CAF50";
+  console.log(numeroAzar);
+});
+console.log(numeroAzar);
